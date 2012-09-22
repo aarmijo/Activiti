@@ -360,9 +360,11 @@
       <fileset dir="../modules/activiti-engine/src/main/resources/org/activiti/impl/bpmn/parser">
         <include name="*.xsd" />
       </fileset>
+      <!--
       <fileset dir="../modules/activiti-engine/src/main/resources/org/activiti/impl/cfg">
         <include name="*.xsd" />
       </fileset>
+      -->
     </copy>
 	</target>
 	
