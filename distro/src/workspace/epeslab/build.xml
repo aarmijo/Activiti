@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="activiti.engine.examples" default="deploy">
+	
+  <property name="webapp.explorer.dir" value="../../apps/apache-tomcat-6.0.32/webapps/activiti-explorer" />
+  
+  <target name="deploy">
+    <copy todir="${webapp.explorer.dir}/WEB-INF/lib" overwrite="true">
+      <fileset dir="deployment-files">
+        <include name="**/*.jar"/>
+      </fileset>
+    </copy>
+    <taskdef name="deploy-bar" classname="org.activiti.engine.impl.ant.DeployBarTask">
+      <classpath>
+        <pathelement path="src/main/config"/>
+        <fileset dir="libs" />
+      </classpath>
+    </taskdef>
+    <deploy-bar file="deployment-files/epeslab.bar" />
+  </target>
+
+</project>
