@@ -4,7 +4,15 @@
 	
   <property name="webapp.explorer.dir" value="../../apps/apache-tomcat-6.0.32/webapps/activiti-explorer" />
   
-  <target name="deploy">
+  <target name="deploy">    
+    <mkdir dir="libs-runtime" />
+    <mkdir dir="libs-test" />
+    <copy todir="libs-runtime">
+      <fileset dir="../../setup/files/dependencies/libs" includesfile="../../setup/files/dependencies/libs.engine.runtime.txt" />
+    </copy>
+    <copy todir="libs-test">
+      <fileset dir="../../setup/files/dependencies/libs" includesfile="../../setup/files/dependencies/libs.engine.test.txt" />
+    </copy>
     <copy todir="${webapp.explorer.dir}/WEB-INF/lib" overwrite="true">
       <fileset dir="deployment-files">
         <include name="**/*.jar"/>
@@ -13,7 +21,8 @@
     <taskdef name="deploy-bar" classname="org.activiti.engine.impl.ant.DeployBarTask">
       <classpath>
         <pathelement path="src/main/config"/>
-        <fileset dir="libs" />
+        <fileset dir="libs-runtime" />
+        <fileset dir="libs-test" />
       </classpath>
     </taskdef>
     <deploy-bar file="deployment-files/epeslab.bar" />
