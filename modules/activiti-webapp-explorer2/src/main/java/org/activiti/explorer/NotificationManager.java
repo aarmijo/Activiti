@@ -60,6 +60,7 @@ public class NotificationManager implements Serializable {
             MessageFormat.format(i18nManager.getMessage(descriptionKey), params), 
             Notification.TYPE_WARNING_MESSAGE);
     notification.setDelayMsec(5000); // click to hide
+    notification.setPosition(Notification.POSITION_CENTERED_TOP);    
     mainWindow.showNotification(notification);
   }
   
